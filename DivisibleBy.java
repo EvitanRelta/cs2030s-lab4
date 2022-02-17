@@ -5,7 +5,18 @@
  * CS2030S Lab 4
  * AY21/22 Semester 2
  *
- * @author Put Your Name (Lab Group)
+ * @author Tan Zong Zhi, Shaun (Group 16A)
  */
 
+public class DivisibleBy implements BooleanCondition<Integer> {
+  private final int divisor;
 
+  public DivisibleBy(int divisor) {
+    this.divisor = divisor;
+  }
+
+  @Override
+  public boolean test(Integer i) {
+    return i % divisor == 0;
+  }
+}

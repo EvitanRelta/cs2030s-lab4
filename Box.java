@@ -26,7 +26,9 @@ public class Box<T> {
 
   @Override
   public String toString() {
-    return String.format("[%s]", content);
+    return content == null
+        ? "[]"
+        : String.format("[%s]", content);
   }
 
   public static <T> Box<T> of(T obj) {

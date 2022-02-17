@@ -21,7 +21,9 @@ public class Box<T> {
     }
 
     Box<?> boxObj = (Box<?>) obj;
-    return boxObj.content.equals(content);
+    return boxObj.content == null || content == null
+        ? boxObj.content == content
+        : boxObj.content.equals(content);
   }
 
   @Override

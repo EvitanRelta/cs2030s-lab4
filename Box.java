@@ -8,6 +8,7 @@
 
 public class Box<T> {
   private final T content;
+  private static final Box<?> EMPTY_BOX = new Box<>(null);
 
   private Box(T content) {
     this.content = content;
@@ -33,5 +34,22 @@ public class Box<T> {
       return null;
     }
     return new Box<T>(obj);
+  }
+
+  public static <T> Box<T> empty() {
+    @SuppressWarnings("unchecked")
+    Box<T> output = (Box<T>) EMPTY_BOX;
+    return output;
+  }
+
+  public static <T> Box<T> ofNullable(T obj) {
+    if (obj == null) {
+      return empty();
+    }
+    return of(obj);
+  }
+
+  public boolean isPresent() {
+    return content != null;
   }
 }

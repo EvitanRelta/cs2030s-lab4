@@ -56,4 +56,14 @@ public class Box<T> {
   public boolean isPresent() {
     return content != null;
   }
+
+  public Box<T> filter(BooleanCondition<? super T> predicate) {
+    if (this.content == null) {
+      return this;
+    }
+
+    return predicate.test(this.content)
+        ? this
+        : empty();
+  }
 }

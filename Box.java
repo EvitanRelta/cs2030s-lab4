@@ -59,7 +59,7 @@ public class Box<T> {
 
   public Box<T> filter(BooleanCondition<? super T> predicate) {
     if (!isPresent()) {
-      return this;
+      return empty();
     }
 
     return predicate.test(this.content)

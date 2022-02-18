@@ -22,6 +22,7 @@ public class Box<T> {
 
     Box<?> boxObj = (Box<?>) obj;
     return !boxObj.isPresent() || !isPresent()
+        // Avoids `(null).equals` error, when either `content` is null
         ? boxObj.content == content
         : boxObj.content.equals(content);
   }

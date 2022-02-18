@@ -66,4 +66,12 @@ public class Box<T> {
         ? this
         : empty();
   }
+
+  public <U> Box<U> map(Transformer<? super T, U> transformer) {
+    if (this.content == null) {
+      return empty();
+    }
+
+    return new Box<U>(transformer.transform(this.content));
+  }
 }

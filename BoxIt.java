@@ -9,6 +9,6 @@
 public class BoxIt<T> implements Transformer<T, Box<T>> {
   @Override
   public Box<T> transform(T input) {
-    return Box.of(input);
+    return Box.ofNullable(input);
   }
 }

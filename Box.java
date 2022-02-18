@@ -41,6 +41,8 @@ public class Box<T> {
   }
 
   public static <T> Box<T> empty() {
+    // EMPTY_BOX's content is null, which is a subtype of everything.
+    // So it's safe to cast any type to `T` in `Box<T>`.
     @SuppressWarnings("unchecked")
     Box<T> output = (Box<T>) EMPTY_BOX;
     return output;

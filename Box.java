@@ -21,14 +21,14 @@ public class Box<T> {
     }
 
     Box<?> boxObj = (Box<?>) obj;
-    return boxObj.content == null || content == null
+    return !boxObj.isPresent() || !isPresent()
         ? boxObj.content == content
         : boxObj.content.equals(content);
   }
 
   @Override
   public String toString() {
-    return content == null
+    return !isPresent()
         ? "[]"
         : String.format("[%s]", content);
   }
@@ -58,7 +58,7 @@ public class Box<T> {
   }
 
   public Box<T> filter(BooleanCondition<? super T> predicate) {
-    if (this.content == null) {
+    if (!isPresent()) {
       return this;
     }
 
@@ -68,7 +68,7 @@ public class Box<T> {
   }
 
   public <U> Box<U> map(Transformer<? super T, U> transformer) {
-    if (this.content == null) {
+    if (!isPresent()) {
       return empty();
     }
 

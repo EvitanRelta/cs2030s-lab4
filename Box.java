@@ -62,7 +62,7 @@ public class Box<T> {
       return empty();
     }
 
-    return predicate.test(this.content)
+    return predicate.test(content)
         ? this
         : empty();
   }
@@ -72,6 +72,6 @@ public class Box<T> {
       return empty();
     }
 
-    return new Box<U>(transformer.transform(this.content));
+    return new Box<U>(transformer.transform(content));
   }
 }

@@ -21,17 +21,17 @@ public class Box<T> {
     }
 
     Box<?> boxObj = (Box<?>) obj;
-    return !boxObj.isPresent() || !isPresent()
+    return !boxObj.isPresent() || !this.isPresent()
         // Avoids `(null).equals` error, when either `content` is null
-        ? boxObj.content == content
-        : boxObj.content.equals(content);
+        ? boxObj.content == this.content
+        : boxObj.content.equals(this.content);
   }
 
   @Override
   public String toString() {
-    return !isPresent()
+    return !this.isPresent()
         ? "[]"
-        : String.format("[%s]", content);
+        : String.format("[%s]", this.content);
   }
 
   public static <T> Box<T> of(T obj) {
@@ -45,36 +45,36 @@ public class Box<T> {
     // EMPTY_BOX's content is null, which is a subtype of everything.
     // So it's safe to cast any type to `T` in `Box<T>`.
     @SuppressWarnings("unchecked")
-    Box<T> output = (Box<T>) EMPTY_BOX;
+    Box<T> output = (Box<T>) Box.EMPTY_BOX;
     return output;
   }
 
   public static <T> Box<T> ofNullable(T obj) {
     if (obj == null) {
-      return empty();
+      return Box.empty();
     }
-    return of(obj);
+    return Box.of(obj);
   }
 
   public boolean isPresent() {
-    return content != null;
+    return this.content != null;
   }
 
   public Box<T> filter(BooleanCondition<? super T> predicate) {
-    if (!isPresent()) {
-      return empty();
+    if (!this.isPresent()) {
+      return Box.empty();
     }
 
-    return predicate.test(content)
+    return predicate.test(this.content)
         ? this
-        : empty();
+        : Box.empty();
   }
 
   public <U> Box<U> map(Transformer<? super T, U> transformer) {
-    if (!isPresent()) {
-      return empty();
+    if (!this.isPresent()) {
+      return Box.empty();
     }
 
-    return ofNullable(transformer.transform(content));
+    return this.ofNullable(transformer.transform(this.content));
   }
 }

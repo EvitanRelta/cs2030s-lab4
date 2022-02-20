@@ -12,13 +12,13 @@ public class LastDigitsOfHashCode implements Transformer<Object,
   private final int k;
 
   public LastDigitsOfHashCode(int kLastDigits) {
-    k = kLastDigits;
+    this.k = kLastDigits;
   }
 
   @Override
   public Integer transform(Object input) {
     int hashCode = input.hashCode();
     int positive = (hashCode < 0 ? -hashCode : hashCode);
-    return positive % (int) Math.pow(10, k);
+    return positive % (int) Math.pow(10, this.k);
   }
 }

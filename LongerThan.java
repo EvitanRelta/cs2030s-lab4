@@ -17,6 +17,6 @@ public class LongerThan implements BooleanCondition<String> {
 
   @Override
   public boolean test(String str) {
-    return str.length() > limit;
+    return str.length() > this.limit;
   }
 }

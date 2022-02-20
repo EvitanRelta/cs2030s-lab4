@@ -17,6 +17,6 @@ public class DivisibleBy implements BooleanCondition<Integer> {
 
   @Override
   public boolean test(Integer i) {
-    return i % divisor == 0;
+    return i % this.divisor == 0;
   }
 }

@@ -75,6 +75,6 @@ public class Box<T> {
       return empty();
     }
 
-    return new Box<U>(transformer.transform(content));
+    return ofNullable(transformer.transform(content));
   }
 }

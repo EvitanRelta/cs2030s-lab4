@@ -35,10 +35,9 @@ public class Box<T> {
   }
 
   public static <T> Box<T> of(T obj) {
-    if (obj == null) {
-      return null;
-    }
-    return new Box<T>(obj);
+    return obj == null
+        ? null
+        : new Box<T>(obj);
   }
 
   public static <T> Box<T> empty() {
@@ -50,10 +49,9 @@ public class Box<T> {
   }
 
   public static <T> Box<T> ofNullable(T obj) {
-    if (obj == null) {
-      return Box.empty();
-    }
-    return Box.of(obj);
+    return obj == null
+        ? Box.empty()
+        : Box.of(obj);
   }
 
   public boolean isPresent() {

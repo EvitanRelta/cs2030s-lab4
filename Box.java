@@ -70,7 +70,7 @@ public class Box<T> {
         : Box.empty();
   }
 
-  public <U> Box<U> map(Transformer<? super T, U> transformer) {
+  public <U> Box<U> map(Transformer<? super T, ? extends U> transformer) {
     if (!this.isPresent()) {
       return Box.empty();
     }

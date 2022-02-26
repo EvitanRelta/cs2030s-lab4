@@ -18,7 +18,7 @@ public class LastDigitsOfHashCode implements Transformer<Object,
   @Override
   public Integer transform(Object input) {
     int hashCode = input.hashCode();
-    int positive = (hashCode < 0 ? -hashCode : hashCode);
-    return positive % (int) Math.pow(10, this.k);
+    int abs = Math.abs(hashCode);
+    return abs % (int) Math.pow(10, this.k);
   }
 }

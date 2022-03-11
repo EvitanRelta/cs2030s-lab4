@@ -1,5 +1,5 @@
 *.class
-.*.swp
+.*.sw[a-z]
 .nfs*
 *.test.*
 .gitignore

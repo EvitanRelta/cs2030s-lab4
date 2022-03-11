@@ -1,0 +1,7 @@
+*.class
+.*.swp
+.nfs*
+*.test.*
+.gitignore
+run_all_tests.sh
+MyTest*.java
